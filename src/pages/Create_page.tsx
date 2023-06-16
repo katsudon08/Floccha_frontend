@@ -1,14 +1,21 @@
 import Button from '@mui/material/Button';
 import { Header } from "../components/Header"
 import { Hooder } from "../components/Hooder"
+import Box from '@mui/material/Box/Box';
 
 export const Create_page = () => {
     return (
-        <>
+        <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+        }}>
             <Header />
-            <div>create_page</div>
-            <Button variant='contained' color='accent_color'>text</Button>
+            <Box sx={{
+                flexGrow: 1,
+                flexDirection: 'column',
+            }}>a
+            </Box>
             <Hooder />
-        </>
+        </Box>
     )
 }

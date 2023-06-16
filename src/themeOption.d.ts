@@ -13,9 +13,25 @@ declare module "@mui/material/styles/createPalette" {
 declare module "@mui/material/Button" {
     interface ButtonPropsColorOverrides {
         base_color: true;
-        main_color: true;
         accent_color: true;
-        selected_text: true;
-        unselected_text: true;
+    }
+}
+
+declare module "@mui/material/Typography" {
+    interface TypographyPropsColorOverrides {
+        accent_color: true;
+        base_color: true;
+    }
+}
+
+declare module "@mui/material/AppBar" {
+    interface AppBarPropsColorOverrides {
+        accent_color: true;
+    }
+}
+
+declare module "@mui/material/IconButton" {
+    interface IconButtonPropsColorOverrides {
+        base_color: true;
     }
 }
