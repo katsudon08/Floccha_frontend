@@ -1,15 +1,14 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
-import Toolbar from '@mui/material/Toolbar';
 
-export const Hooder = () => {
-
+export const Footer = () => {
     return (
         <Box sx={{
-            alignItems: 'flex-end'
+            alignItems: 'flex-end',
+            bottom: 0,
         }}>
-            <AppBar position='static' color='accent_color'>
+            <AppBar component="footer" position='static' color='accent_color'>
                 <Button color='accent_color'>a</Button>
             </AppBar>
         </Box>

@@ -1,6 +1,10 @@
 import { CssBaseline } from "@mui/material"
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import { Create_page } from "./pages/Create_page"
+import { Header } from "./components/Header"
+import { Footer } from "./components/Footer"
 
 function App() {
     const theme = createTheme({
@@ -25,7 +29,24 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Create_page />
+            <Box>
+                <Grid
+                    container
+                    direction="column"
+                    sx={{ minHeight: "100vh" }}
+                >
+                    <Grid item xs="auto">
+                        <Header />
+                    </Grid>
+                    <Grid item xs sx={{ backgroundColor: "#938" }}>
+                        {/* 生成画面を書く */}
+                        <Create_page />
+                    </Grid>
+                    <Grid item xs="auto">
+                        <Footer />
+                    </Grid>
+                </Grid>
+            </Box>
         </ThemeProvider>
     )
 }

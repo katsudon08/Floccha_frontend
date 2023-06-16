@@ -9,7 +9,7 @@ import IconButton from '@mui/material/IconButton';
 export const Header = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position='static' color='accent_color'>
+            <AppBar component="header" position='static' color='accent_color'>
                 <Toolbar variant='dense'>
                     <Button color='base_color' sx={{
                         textTransform: 'none' // ボタンのテキストの小文字出力を可能にする
