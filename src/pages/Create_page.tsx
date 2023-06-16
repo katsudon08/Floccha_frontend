@@ -1,5 +1,7 @@
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
+import { Button } from "@mui/material"
+import Container from "@mui/material/Container"
 
 export const Create_page = () => {
     return (
@@ -8,11 +10,33 @@ export const Create_page = () => {
             direction="row"
         >
             <Grid item xs>
-                <Box sx={{ backgroundColor: "#383838", borderColor: "#000000" }}>左側</Box>
+                <Grid
+                    container
+                    xs
+                    direction="column"
+                    sx={{ backgroundColor: "#383838", border: 0.5 }}
+                >
+                    <Button>text</Button>
+                    <Button>text</Button>
+                    <Button>text</Button>
+                    <Button>text</Button>
+                    <Button>text</Button>
+                </Grid>
             </Grid>
 
             <Grid item xs>
-                <Box sx={{ backgroundColor: "#383838", borderColor: "#000000" }}>右側</Box>
+                <Grid
+                    container
+                    xs
+                    direction="column"
+                    sx={{ backgroundColor: "#383838", border: 0.5 }}
+                >
+                    <Button>text</Button>
+                    <Button>text</Button>
+                    <Button>text</Button>
+                    <Button>text</Button>
+                    <Button>text</Button>
+                </Grid>
             </Grid>
         </Grid>
     )

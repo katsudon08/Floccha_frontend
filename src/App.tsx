@@ -38,7 +38,7 @@ function App() {
                     <Grid item xs="auto">
                         <Header />
                     </Grid>
-                    <Grid item xs>
+                    <Grid item xs sx={{backgroundColor: "#1526"}}>
                         {/* 生成画面を書く */}
                         <Create_page />
                     </Grid>
