@@ -17,11 +17,14 @@ export const Create_page = () => {
                         container
                         xs
                         direction="column"
-                        // 21, 34行目のbgcolorにテーマが当てられない
+                        // theme colorは.mainのような形で書く必要がある
                         sx={{ bgcolor: "main_color.main", border: 0.5, height: "100%", padding: 1.8 }}
                     >
-                        <Box sx={{ height: "100%", width: "100%", backgroundColor: "#FFFFFF" }}>
-
+                        <Box sx={{ height: "100%", width: "100%",
+                            backgroundColor: "#FFFFFF"
+                        }}>
+                            {/* テキストエディタのパート */}
+                            <Button color="primary" variant="contained">text</Button>
                         </Box>
                     </Grid>
                 </Grid>
@@ -31,11 +34,12 @@ export const Create_page = () => {
                         container
                         xs
                         direction="column"
-                        // theme colorは.mainのような形で書く必要がある
                         sx={{ bgcolor: "main_color.main", border: 0.5, height: "100%", padding: 1.8 }}
                     >
-                        <Box sx={{ height: "100%", width: "100%", backgroundColor: "#FFFFFF" }}>
-
+                        <Box sx={{ height: "100%", width: "100%",
+                            backgroundColor: "#FFFFFF"
+                        }}>
+                            {/* プログラムチャートのパート */}
                         </Box>
                     </Grid>
                 </Grid>
@@ -45,8 +49,10 @@ export const Create_page = () => {
                 xs
                 sx={{ bgcolor: "accent_color.main", border: 0.5, height: "20%", padding: 0.9 }}
             >
-                <Box sx={{ height: "100%", width: "100%", backgroundColor: "#FFFFFF" }}>
-
+                <Box sx={{ height: "100%", width: "100%",
+                    backgroundColor: "#FFFFFF"
+                }}>
+                    {/* コンソール出力のパート (エラー等)*/}
                 </Box>
             </Grid>
         </>
