@@ -49,3 +49,10 @@ declare module "@mui/material/Box" {
         base_color: true;
     }
 }
+
+declare module "@mui/material/Tab" {
+    interface TabPropsColorOverrides {
+        selected_color: true;
+        unselected_color: true;
+    }
+}
