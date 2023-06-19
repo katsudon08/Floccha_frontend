@@ -13,7 +13,7 @@ function App() {
                 main: "#FFFFFF"
             },
             main_color: {
-                main: "#6F6F6F"
+                main: "#383838"
             },
             accent_color: {
                 main: "#2E2E2E"

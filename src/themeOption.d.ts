@@ -19,7 +19,8 @@ declare module "@mui/material/Button" {
 
 declare module "@mui/material/Typography" {
     interface TypographyPropsColorOverrides {
-        accent_color: true;
+        selected_text: true;
+        unselected_text: true;
         base_color: true;
     }
 }
@@ -33,5 +34,12 @@ declare module "@mui/material/AppBar" {
 declare module "@mui/material/IconButton" {
     interface IconButtonPropsColorOverrides {
         base_color: true;
+    }
+}
+
+declare module "@mui/material/Grid" {
+    interface GridPropsColorOverrides {
+        main_color: true;
+        accent_color: true;
     }
 }
