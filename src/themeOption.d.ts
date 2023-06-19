@@ -43,3 +43,9 @@ declare module "@mui/material/Grid" {
         accent_color: true;
     }
 }
+
+declare module "@mui/material/Box" {
+    interface BoxPropsColorOverrides {
+        base_color: true;
+    }
+}

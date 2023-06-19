@@ -7,10 +7,11 @@ import { Button } from "@mui/material"
 export const Create_page = () => {
     return (
         <>
+            {/* テキストエディタ、プログラミングフローチャート */}
             <Grid
                 container
                 direction="row"
-                sx={{ height: "80%" }}
+                sx={{ height: "70%" }}
             >
                 <Grid item xs>
                     <Grid
@@ -18,9 +19,11 @@ export const Create_page = () => {
                         xs
                         direction="column"
                         // theme colorは.mainのような形で書く必要がある
-                        sx={{ bgcolor: "main_color.main", border: 0.5, height: "100%", padding: 1.8 }}
+                        sx={{ bgcolor: "main_color.main", border: 0.5, height: "100%", pl: 2, pr: 2 }}
                     >
-                        <Box sx={{ height: "100%", width: "100%",
+                        {/* タブ機能の実装 */}
+                        <Box sx={{
+                            height: "100%", width: "100%",
                             backgroundColor: "#FFFFFF"
                         }}>
                             {/* テキストエディタのパート */}
@@ -34,9 +37,10 @@ export const Create_page = () => {
                         container
                         xs
                         direction="column"
-                        sx={{ bgcolor: "main_color.main", border: 0.5, height: "100%", padding: 1.8 }}
+                        sx={{ bgcolor: "main_color.main", border: 0.5, height: "100%" }}
                     >
-                        <Box sx={{ height: "100%", width: "100%",
+                        <Box sx={{
+                            height: "100%", width: "100%",
                             backgroundColor: "#FFFFFF"
                         }}>
                             {/* プログラムチャートのパート */}
@@ -44,12 +48,22 @@ export const Create_page = () => {
                     </Grid>
                 </Grid>
             </Grid>
+
+            {/* コンソール */}
             <Grid
                 container
                 xs
-                sx={{ bgcolor: "accent_color.main", border: 0.5, height: "20%", padding: 0.9 }}
+                sx={{ bgcolor: "accent_color.main", border: 0.5, height: "30%", pr: 1, pl: 1 }}
             >
-                <Box sx={{ height: "100%", width: "100%",
+                {/* タブ機能の実装 */}
+                <Box sx={{ height: "20%", width: "100%", color: "base_color.main", mb: 0.4, ml: 0.5 }}>
+                    {/* Gridで囲むこと */}
+                    {/* ボタンのサイズを少し小さくする */}
+                    <Button color="base_color" variant="text">log</Button>
+                    <Button color="base_color" variant="text">error</Button>
+                </Box>
+                <Box sx={{
+                    height: "80%", width: "100%",
                     backgroundColor: "#FFFFFF"
                 }}>
                     {/* コンソール出力のパート (エラー等)*/}
