@@ -19,7 +19,6 @@ export const Create_page = () => {
                 <Grid item xs>
                     <Grid
                         container
-                        xs
                         direction="column"
                         // theme colorは.mainのような形で書く必要がある
                         sx={{ bgcolor: "main_color.main", border: 0.5, height: "100%", pl: 2, pr: 2 }}
@@ -40,7 +39,6 @@ export const Create_page = () => {
                 <Grid item xs>
                     <Grid
                         container
-                        xs
                         direction="column"
                         sx={{ bgcolor: "main_color.main", border: 0.5, height: "100%" }}
                     >
@@ -58,7 +56,6 @@ export const Create_page = () => {
             {/* コンソール */}
             <Grid
                 container
-                xs
                 sx={{ bgcolor: "accent_color.main", border: 0.5, height: "30%", pr: 1, pl: 1 }}
             >
                 {/* タブ機能の実装 */}
