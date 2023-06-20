@@ -12,6 +12,7 @@ export const Create_page = () => {
         <>
             {/* テキストエディタ、プログラミングフローチャート */}
             <Grid
+                // containerのpropsはxsを使ってはいけない
                 container
                 direction="row"
                 sx={{ height: "70%" }}
