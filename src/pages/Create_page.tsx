@@ -1,8 +1,6 @@
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
 import { Button } from "@mui/material"
-import Tabs from "@mui/material/Tabs"
-import Tab from "@mui/material/Tab"
 import { TextEditor } from "../components/TextEditor"
 import { FlowChart } from "../components/FlowChart"
 import { Console } from "../components/Console"
