@@ -1,6 +1,8 @@
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
 import { Button } from "@mui/material"
+import Tabs from "@mui/material/Tabs"
+import Tab from "@mui/material/Tab"
 import { TextEditor } from "../components/TextEditor"
 import { FlowChart } from "../components/FlowChart"
 import { Console } from "../components/Console"
@@ -66,7 +68,7 @@ export const Create_page = () => {
                     {/* Gridで囲むこと */}
                     {/* ボタンのサイズを少し小さくする */}
                     <Button size="small" color="base_color" variant="text">log</Button>
-                    <Button size="small" color="base_color" variant="text">error</Button>
+                    <Button size="small" color="selected_base_color" variant="text" sx={{ml: 0.5}}>output</Button>
                 </Box>
                 <Box sx={{
                     height: "80%", width: "100%",

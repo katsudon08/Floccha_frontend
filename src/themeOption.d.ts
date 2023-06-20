@@ -7,12 +7,14 @@ declare module "@mui/material/styles/createPalette" {
         accent_color?: PaletteColorOptions;
         selected_text?: PaletteColorOptions;
         unselected_text?: PaletteColorOptions;
+        selected_base_color?: PaletteColorOptions;
     }
 }
 
 declare module "@mui/material/Button" {
     interface ButtonPropsColorOverrides {
         base_color: true;
+        selected_base_color: true;
         accent_color: true;
     }
 }

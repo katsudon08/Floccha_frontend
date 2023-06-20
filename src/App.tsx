@@ -23,6 +23,9 @@ function App() {
             },
             unselected_text: {
                 main: "#85DAFB"
+            },
+            selected_base_color: {
+                main: "#919191"
             }
         }
     });
