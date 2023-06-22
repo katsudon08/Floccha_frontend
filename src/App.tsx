@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import { Create_page } from "./pages/Create_page"
 import { Header } from "./components/Header"
 import { Footer } from "./components/Footer"
+import { TabArea } from "./components/TabArea";
 
 function App() {
     const theme = createTheme({
@@ -32,7 +33,7 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Box>
+            <Box sx={{ height: "100%", width: "100%" }}>
                 <Grid
                     container
                     direction="column"
@@ -41,16 +42,19 @@ function App() {
                     <Grid item xs="auto">
                         <Header />
                     </Grid>
-                    <Grid item xs sx={{backgroundColor: "#1526"}}>
-                        {/* 生成画面を書く */}
-                        <Create_page />
+                    <Grid item xs sx={{ backgroundColor: "#1526" }}>
+                        <TabArea />
                     </Grid>
+                    {/* <Grid item xs sx={{backgroundColor: "#1526"}}> */}
+                    {/* 生成画面を書く */}
+                    {/* <Create_page /> */}
+                    {/* </Grid> */}
                     <Grid item xs="auto">
-                        <Footer />
+                    <Footer />
                     </Grid>
                 </Grid>
             </Box>
-        </ThemeProvider>
+        </ThemeProvider >
     )
 }
 

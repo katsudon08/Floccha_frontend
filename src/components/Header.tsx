@@ -25,7 +25,7 @@ export const Header = () => {
                     }}>
                         Help
                     </Button>
-                    <Typography fontSize="medium" color="selected_text.main" sx={{ flexGrow: 1, ml: 2 }}>Sample.ts</Typography>
+                    <Typography fontSize="medium" color="selected_text.main" sx={{ flexGrow: 1, ml: 2 }} />
                     <IconButton color='base_color'>
                         <PlayArrowIcon color='inherit'/>
                     </IconButton>
