@@ -13,9 +13,9 @@ export const TabArea = () => {
                 <TabList
                     textColor='secondary'
                 >
-                    <Tab label="Item One" value={1} />
-                    <Tab label="Item Two" value={2} />
-                    <Tab label="Item Three" value={3} />
+                    <Tab label="Item One" value="1" />
+                    <Tab label="Item Two" value="2" />
+                    <Tab label="Item Three" value="3" />
                 </TabList>
                 </Box>
                 <TabPanel value='1' sx={{ backgroundColor: "base_color.main", height: "90%", padding: 0 }}>
