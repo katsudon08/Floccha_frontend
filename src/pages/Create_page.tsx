@@ -15,20 +15,20 @@ export const Create_page = () => {
                 // containerのpropsはxsを使ってはいけない
                 container
                 direction="row"
-                sx={{ height: "100%", width: "100%"}}
+                sx={{ height: "100%", width: "100%" }}
             >
                 <Grid item xs>
                     <Grid
                         container
                         direction="column"
                         // theme colorは.mainのような形で書く必要がある
-                        sx={{ bgcolor: "main_color.main", height: "100%" }}
+                        sx={{ bgcolor: "main_color.main", height: "100%", width: "100%" }}
                     >
                         {/* Drawerにファイル一覧を実装する */}
 
                         {/* Draft.jsでのテキストエディタ */}
                         <Box sx={{
-                            height: "100%", width: "100%",
+                            height: "100%", width: "100%", maxWidth: "100%", minWidth: "100%", overflow: "auto",
                             backgroundColor: "base_color.main",
                             borderRight: 1, borderColor: 'divider'
                         }}>
@@ -42,7 +42,7 @@ export const Create_page = () => {
                     <Grid
                         container
                         direction="column"
-                        sx={{ bgcolor: "main_color.main", height: "100%" }}
+                        sx={{ bgcolor: "main_color.main", height: "100%", width: "100%" }}
                     >
                         <Box sx={{
                             height: "100%", width: "100%",

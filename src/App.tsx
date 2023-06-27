@@ -49,9 +49,9 @@ function App() {
                     {/* 生成画面を書く */}
                     {/* <Create_page /> */}
                     {/* </Grid> */}
-                    <Grid item xs="auto">
-                    <Footer />
-                    </Grid>
+                    {/* <Grid item xs="auto"> */}
+                    {/* <Footer /> */}
+                    {/* </Grid> */}
                 </Grid>
             </Box>
         </ThemeProvider >
