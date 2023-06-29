@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import { Create_page } from "./pages/Create_page"
 import { Header } from "./components/Header"
 import { Footer } from "./components/Footer"
+import { TextEditor } from "./components/TextEditor";
 
 function App() {
     const theme = createTheme({
@@ -42,7 +43,8 @@ function App() {
                         <Header />
                     </Grid>
                     <Grid item xs sx={{ backgroundColor: "#1526" }}>
-                        <Create_page />
+                        {/* <Create_page /> */}
+                        <TextEditor />
                     </Grid>
                     {/* <Grid item xs sx={{backgroundColor: "#1526"}}> */}
                     {/* 生成画面を書く */}
