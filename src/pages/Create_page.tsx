@@ -22,16 +22,17 @@ export const Create_page = () => {
                         container
                         direction="column"
                         // theme colorは.mainのような形で書く必要がある
-                        sx={{ bgcolor: "main_color.main", height: "100%", width: "100%" }}
+                        sx={{ bgcolor: "main_color.main", height: "100%", width: "100%", maxWidth: "100%" }}
                     >
                         {/* Drawerにファイル一覧を実装する */}
 
                         {/* Draft.jsでのテキストエディタ */}
-                        <Box component="div"
+                        <Box
                         sx={{
-                            height: "100%", width: "100%", maxWidth: "100%", minWidth: "100%", overflow: "auto",
+                            height: "100%", width: "100%", maxWidth: "100%",
                             backgroundColor: "base_color.main",
-                            borderRight: 1, borderColor: 'divider'
+                            borderRight: 1, borderColor: 'divider',
+                            padding: 2
                         }}>
                             {/* テキストエディタのパート */}
                             <TextEditor />
@@ -43,7 +44,7 @@ export const Create_page = () => {
                     <Grid
                         container
                         direction="column"
-                        sx={{ bgcolor: "main_color.main", height: "100%", width: "100%" }}
+                        sx={{ bgcolor: "main_color.main", height: "100%", width: "100%", maxWidth: "100%" }}
                     >
                         <Box sx={{
                             height: "100%", width: "100%",

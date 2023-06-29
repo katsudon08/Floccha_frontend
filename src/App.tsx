@@ -31,6 +31,7 @@ function App() {
         }
     });
     return (
+        // contextかuseStateのどちらかを使って同会層での値の受け渡しを行う
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <Box sx={{ height: "100%", width: "100%" }}>
@@ -43,8 +44,8 @@ function App() {
                         <Header />
                     </Grid>
                     <Grid item xs sx={{ backgroundColor: "#1526" }}>
-                        {/* <Create_page /> */}
-                        <TextEditor />
+                        <Create_page />
+                        {/* <TextEditor /> */}
                     </Grid>
                     {/* <Grid item xs sx={{backgroundColor: "#1526"}}> */}
                     {/* 生成画面を書く */}
