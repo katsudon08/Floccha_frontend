@@ -6,15 +6,14 @@ import { Create_page } from '../pages/Create_page';
 import { Header } from './Header';
 
 const EditorContext = React.createContext({
-    editorState: "",
-    setEditorState: (newState: object) => { }
+    editorState: EditorState,
+    setEditorState: (newState: EditorState) => EditorState
 });
 
 export const useEditorContext = React.useContext(EditorContext);
 
 export const ContextProvider = () => {
-    // ! 必ずany型から変えること
-    const [editorState, setEditorState] = React.useState<any>(
+    const [editorState, setEditorState] = React.useState<EditorState>(
         EditorState.createEmpty()
     );
 
