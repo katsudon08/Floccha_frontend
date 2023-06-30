@@ -1,13 +1,25 @@
+import React from "react";
 import { CssBaseline } from "@mui/material"
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import { Create_page } from "./pages/Create_page"
-import { Header } from "./components/Header"
-import { Footer } from "./components/Footer"
-import { TextEditor } from "./components/TextEditor";
+import { EditorState } from 'draft-js'
+import { ContextProvider } from "./components/ContextProvider";
 
 function App() {
+    // editorState, setEditorStateの型を確認
+    const [editorState, setEditorState] = React.useState(() =>
+        EditorState.createEmpty()
+    )
+
+    interface IEditorContext {
+        eitorState: string;
+        setEditorState: React.FC;
+    }
+
+    const editorContext = React.createContext<IEditorContext | null>({
+        editorState: "",
+        setEditorState: (newState: string) => {}
+    });
+
     const theme = createTheme({
         palette: {
             base_color: {
@@ -34,28 +46,7 @@ function App() {
         // contextかuseStateのどちらかを使って同会層での値の受け渡しを行う
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Box sx={{ height: "100%", width: "100%" }}>
-                <Grid
-                    container
-                    direction="column"
-                    sx={{ minHeight: "100vh", maxHeight: "100vh", minWidth: "100vh" }}
-                >
-                    <Grid item xs="auto">
-                        <Header />
-                    </Grid>
-                    <Grid item xs sx={{ backgroundColor: "#1526" }}>
-                        <Create_page />
-                        {/* <TextEditor /> */}
-                    </Grid>
-                    {/* <Grid item xs sx={{backgroundColor: "#1526"}}> */}
-                    {/* 生成画面を書く */}
-                    {/* <Create_page /> */}
-                    {/* </Grid> */}
-                    {/* <Grid item xs="auto"> */}
-                    {/* <Footer /> */}
-                    {/* </Grid> */}
-                </Grid>
-            </Box>
+            <></>
         </ThemeProvider >
     )
 }

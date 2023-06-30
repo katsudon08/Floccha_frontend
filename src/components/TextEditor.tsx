@@ -1,8 +1,6 @@
 import React from 'react';
-import { Editor, EditorState } from 'draft-js'
+import { Editor, EditorState, convertToRaw } from 'draft-js'
 import 'draft-js/dist/Draft.css'
-
-// react useContextでデータを共有？
 
 // hiddenを使うのかもしれない
 export const TextEditor = () => {
@@ -10,12 +8,22 @@ export const TextEditor = () => {
         EditorState.createEmpty()
     )
 
+    const saveContent = () => {
+        const currentContent = editorState.getCurrentContent();
+        const raw = convertToRaw(currentContent);
+        console.log(raw);
+    }
+
     return (
-        <Editor
-            editorState={editorState}
-            onChange={setEditorState}
-            placeholder='ここから入力する'
-        />
+        <>
+            <div>
+                <button onClick={saveContent}>保存</button>
+            </div>
+            <Editor
+                editorState={editorState}
+                onChange={setEditorState}
+                placeholder='ここから入力する'
+            />
+        </>
     );
-    // return <div>TextEditor</div>
 }

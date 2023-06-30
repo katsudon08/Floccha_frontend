@@ -6,13 +6,8 @@ import Typography from '@mui/material/Typography';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import IconButton from '@mui/material/IconButton';
-import { TextEditor } from './TextEditor';
 
 export const Header = () => {
-    const saveContent = () => {
-        console.log(TextEditor)
-    }
-
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar component="header" position='static' color='accent_color'>
@@ -31,7 +26,7 @@ export const Header = () => {
                         Help
                     </Button>
                     <Typography fontSize="medium" color="selected_text.main" sx={{ flexGrow: 1, ml: 2 }} />
-                    <IconButton color='base_color' onClick={saveContent} >
+                    <IconButton color='base_color'>
                         <PlayArrowIcon color='inherit'/>
                     </IconButton>
                     <Button color='base_color'>100%</Button>
