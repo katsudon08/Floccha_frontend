@@ -1,11 +1,12 @@
 import React from 'react';
 import { Editor, EditorState, convertToRaw } from 'draft-js'
 import 'draft-js/dist/Draft.css'
-import { useEditorContext } from './ContextProvider';
 
 // hiddenを使うのかもしれない
 export const TextEditor = () => {
-    const {editorState, setEditorState} = useEditorContext();
+    const [editorState, setEditorState] = React.useState<EditorState>(
+        EditorState.createEmpty()
+    );
 
     const saveContent = () => {
         const currentContent = editorState.getCurrentContent();

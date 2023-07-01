@@ -6,13 +6,8 @@ import Typography from '@mui/material/Typography';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import IconButton from '@mui/material/IconButton';
-import { useEditorContext } from './ContextProvider';
 
 export const Header = () => {
-    const {editorState} = useEditorContext();
-
-    console.log(editorState);
-
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar component="header" position='static' color='accent_color'>
