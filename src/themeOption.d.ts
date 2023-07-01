@@ -16,6 +16,7 @@ declare module "@mui/material/Button" {
         base_color: true;
         selected_base_color: true;
         accent_color: true;
+        main_color: true;
     }
 }
 
@@ -36,6 +37,7 @@ declare module "@mui/material/AppBar" {
 declare module "@mui/material/IconButton" {
     interface IconButtonPropsColorOverrides {
         base_color: true;
+        main_color: true;
     }
 }
 

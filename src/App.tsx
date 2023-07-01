@@ -1,10 +1,11 @@
 import React from "react";
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 import { CssBaseline } from "@mui/material"
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Box from '@mui/material/Box';
 import { Create_page } from "./pages/Create_page";
 import { Header } from "./components/Header";
+import { TextEditor } from "./components/TextEditor";
 
 function App() {
     const theme = createTheme({
@@ -33,27 +34,8 @@ function App() {
         // contextかuseStateのどちらかを使って同会層での値の受け渡しを行う
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Box sx={{ height: "100%", width: "100%" }}>
-                <Grid
-                    container
-                    direction="column"
-                    sx={{ minHeight: "100vh", maxHeight: "100vh", minWidth: "100vh" }}
-                >
-                    <Grid item xs="auto">
-                        <Header />
-                    </Grid>
-                    <Grid item xs sx={{ backgroundColor: "#1526" }}>
-                        <Create_page />
-                        {/* <TextEditor /> */}
-                    </Grid>
-                    {/* <Grid item xs sx={{backgroundColor: "#1526"}}> */}
-                    {/* 生成画面を書く */}
-                    {/* <Create_page /> */}
-                    {/* </Grid> */}
-                    {/* <Grid item xs="auto"> */}
-                    {/* <Footer /> */}
-                    {/* </Grid> */}
-                </Grid>
+            <Box sx={{ padding: 2, minHeight: "100vh" }}>
+                <TextEditor />
             </Box>
         </ThemeProvider >
     )

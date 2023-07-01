@@ -32,7 +32,7 @@ export const Create_page = () => {
                             height: "100%", width: "100%", maxWidth: "100%",
                             backgroundColor: "base_color.main",
                             borderRight: 1, borderColor: 'divider',
-                            padding: 2
+                            // padding: 2
                         }}>
                             {/* テキストエディタのパート */}
                             <TextEditor />

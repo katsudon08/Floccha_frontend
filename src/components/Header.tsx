@@ -4,8 +4,8 @@ import Button from '@mui/material/Button';
 import { Box } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import IconButton from '@mui/material/IconButton';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 export const Header = () => {
     return (
@@ -13,7 +13,7 @@ export const Header = () => {
             <AppBar component="header" position='static' color='accent_color'>
                 <Toolbar variant='dense'>
                     <IconButton color="base_color">
-                        <ContentCopyIcon color="inherit"/>
+                        <ContentCopyIcon color="inherit" />
                     </IconButton>
                     <Button color='base_color' sx={{
                         textTransform: 'none' // ボタンのテキストの小文字出力を可能にする
@@ -26,8 +26,8 @@ export const Header = () => {
                         Help
                     </Button>
                     <Typography fontSize="medium" color="selected_text.main" sx={{ flexGrow: 1, ml: 2 }} />
-                    <IconButton color='base_color'>
-                        <PlayArrowIcon color='inherit'/>
+                    <IconButton color='base_color' >
+                        <PlayArrowIcon color='inherit' />
                     </IconButton>
                     <Button color='base_color'>100%</Button>
                 </Toolbar>

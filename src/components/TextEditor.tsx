@@ -1,6 +1,9 @@
 import React from 'react';
 import { Editor, EditorState, convertToRaw } from 'draft-js'
 import 'draft-js/dist/Draft.css'
+import { Button, Box, Grid } from '@mui/material';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import IconButton from '@mui/material/IconButton';
 
 // hiddenを使うのかもしれない
 export const TextEditor = () => {
@@ -11,23 +14,31 @@ export const TextEditor = () => {
     const saveContent = () => {
         const currentContent = editorState.getCurrentContent();
         const raw = convertToRaw(currentContent);
-        // console.log(raw);
-        console.log(typeof(editorState))
-        console.log(typeof(setEditorState))
-        console.log(editorState)
-        console.log(setEditorState)
+        console.log(raw);
+        // console.log(typeof (editorState))
+        // console.log(typeof (setEditorState))
+        // console.log(editorState)
+        // console.log(setEditorState)
     }
 
     return (
         <>
-            <div>
-                <button onClick={saveContent}>保存</button>
-            </div>
-            <Editor
-                editorState={editorState}
-                onChange={setEditorState}
-                placeholder='ここから入力する'
-            />
+            <Grid container direction="column">
+                <Grid item xs="auto">
+                    <Button variant='outlined' onClick={saveContent} sx={{ marginBottom: 1 }}>save</Button>
+                </Grid>
+                <Grid item xs>
+                    <Box sx={{
+                        border: 1, borderRadius: 1, borderColor: "divider"
+                    }}>
+                        <Editor
+                            editorState={editorState}
+                            onChange={setEditorState}
+                            placeholder='ここから入力する'
+                        />
+                    </Box>
+                </Grid>
+            </Grid>
         </>
     );
 }
