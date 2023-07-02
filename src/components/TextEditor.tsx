@@ -25,11 +25,11 @@ export const TextEditor = () => {
         <>
             <Grid container direction="column">
                 <Grid item xs="auto">
-                    <Button variant='outlined' onClick={saveContent} sx={{ marginBottom: 1 }}>save</Button>
+                    <Button variant='outlined' onClick={saveContent} >save</Button>
                 </Grid>
                 <Grid item xs>
                     <Box sx={{
-                        border: 1, borderRadius: 1, borderColor: "divider"
+                        border: 1.5, borderRadius: 1, borderColor: "divider", minWidth: "100%", marginTop: 2, position: "relative", overflowY: "auto", overflowX: "auto"
                     }}>
                         <Editor
                             editorState={editorState}
