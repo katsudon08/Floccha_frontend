@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Grid from '@mui/material/Grid';
 import { CssBaseline } from "@mui/material"
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Box from '@mui/material/Box';
+import { useGetElementProperty } from "./components/getElementPropHook";
 import { Create_page } from "./pages/Create_page";
 import { Header } from "./components/Header";
 import { TextEditor } from "./components/TextEditor";
 
 function App() {
+    const [elementProp, setElementProp] = useState<number>(0);
+
     const theme = createTheme({
         palette: {
             base_color: {
@@ -30,12 +33,22 @@ function App() {
             }
         }
     });
+
+    const containerRef = useRef(null);
+    const {getElementProperty} = useGetElementProperty(containerRef);
+
+    useEffect(() => {
+        setElementProp(getElementProperty("bottom"))
+    }, [])
+
+    // console.log("functionOut", elementProp);
+
     return (
         // contextかuseStateのどちらかを使って同会層での値の受け渡しを行う
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Box sx={{ padding: 2, minHeight: "100vh" }}>
-                <TextEditor />
+            <Box sx={{ padding: 2, minHeight: "100vh" }} ref={containerRef}>
+                <TextEditor containerBottom={elementProp}/>
             </Box>
         </ThemeProvider >
     )
