@@ -19,13 +19,14 @@ export const TextEditor = ({ containerBottom }: { containerBottom: number }) => 
 
     // 代入すると0になってしまう
     useEffect(() => {
-        setElementProp(getElementProperty("bottom"));
+        setElementProp(getElementProperty("height"));
     }, []);
 
     console.log("buttonBottom", elementProp);
     console.log("containerBottom", containerBottom);
 
-    const editorHeight = containerBottom - elementProp;
+    // おそらくpadding: 2の値が50px
+    const editorHeight = containerBottom - elementProp - 50;
     console.log("editorHeight", editorHeight);
 
     const saveContent = () => {
@@ -45,16 +46,15 @@ export const TextEditor = ({ containerBottom }: { containerBottom: number }) => 
                     <Button variant='outlined' onClick={saveContent} >save</Button>
                 </Grid>
                 <Grid item xs>
-                    <Container fixed sx={{ backgroundColor: "black", minHeight: editorHeight }}>
-                        {/* <Editor
-                            editorState={editorState}
-                            onChange={setEditorState}
-                            placeholder='ここから入力する'
-                        /> */}
-                        <Paper>
-                            a
-                        </Paper>
-                    </Container>
+                    <Box sx={{ height: editorHeight, mt: 2 }}>
+                        <Card sx={{ height: "100%" }}>
+                            <Editor
+                                editorState={editorState}
+                                onChange={setEditorState}
+                                placeholder='ここから入力する'
+                            />
+                        </Card>
+                    </Box>
                 </Grid>
             </Grid>
         </>

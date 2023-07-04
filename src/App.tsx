@@ -38,7 +38,7 @@ function App() {
     const {getElementProperty} = useGetElementProperty(containerRef);
 
     useEffect(() => {
-        setElementProp(getElementProperty("bottom"))
+        setElementProp(getElementProperty("height"))
     }, [])
 
     // console.log("functionOut", elementProp);

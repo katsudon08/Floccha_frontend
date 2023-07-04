@@ -30,6 +30,8 @@ export const useGetElementProperty = <T extends HTMLElement>(
 ) => {
     const getElementProperty = useCallback(
         (targetProperty: DOMRectProperty): number => {
+            console.log("a", typeof(elementRef));
+            console.log("b", typeof(elementRef.current));
             const clientRect = elementRef.current?.getBoundingClientRect();
             if (clientRect) {
                 return clientRect[targetProperty];
