@@ -47,7 +47,7 @@ export const TextEditor = ({ containerBottom }: { containerBottom: number }) => 
                 </Grid>
                 <Grid item xs>
                     <Box sx={{ height: editorHeight, mt: 2, border: 1, borderColor: "divider", borderRadius: 1 }}>
-                        <Card sx={{ height: "100%", padding: 1 }}>
+                        <Card sx={{ height: "100%", padding: 1, overflowY: "auto" }}>
                             <Editor
                                 editorState={editorState}
                                 onChange={setEditorState}
