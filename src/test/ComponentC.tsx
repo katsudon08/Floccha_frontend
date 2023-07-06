@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { UserCount } from './test'
+import { UserCount } from './Test'
 
 export const ComponentC = () => {
     const count = useContext(UserCount);

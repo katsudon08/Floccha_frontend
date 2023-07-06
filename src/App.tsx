@@ -4,9 +4,8 @@ import { CssBaseline } from "@mui/material"
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Box from '@mui/material/Box';
 import { useGetElementProperty } from "./components/getElementPropHook";
-import { Create_page } from "./pages/Create_page";
 import { Header } from "./components/Header";
-import { TextEditor } from "./components/TextEditor";
+import { CreatePart } from "./components/CreatePart";
 
 function App() {
     const [elementProp, setElementProp] = useState<number>(0);
@@ -48,7 +47,7 @@ function App() {
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <Box sx={{ padding: 2, minHeight: "100vh" }} ref={containerRef}>
-                <TextEditor containerBottom={elementProp}/>
+                <CreatePart containerBottom={elementProp}/>
             </Box>
         </ThemeProvider >
     )
