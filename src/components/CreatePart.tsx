@@ -1,7 +1,7 @@
 import React, { RefObject, useEffect, useRef, useState } from 'react';
 import { Editor, EditorState, convertToRaw } from 'draft-js'
 import 'draft-js/dist/Draft.css'
-import { Button, Box, Grid, Container, Card, Paper } from '@mui/material';
+import { Button, Box, Grid, Container, Card, Paper, Toolbar } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import IconButton from '@mui/material/IconButton';
 import { useGetElementProperty } from './getElementPropHook';
@@ -45,7 +45,9 @@ export const CreatePart = ({ containerBottom }: { containerBottom: number }) => 
         <>
             <Grid container direction="column">
                 <Grid item xs="auto" ref={targetRef}>
-                    <Button variant='outlined' onClick={saveContent} >save</Button>
+                    <Toolbar>
+                        <Button variant='outlined' onClick={saveContent} >save</Button>
+                    </Toolbar>
                 </Grid>
                 <Grid item xs >
                     <Grid container direction="row">

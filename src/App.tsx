@@ -47,7 +47,7 @@ function App() {
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <Box sx={{ padding: 2, minHeight: "100vh" }} ref={containerRef}>
-                <CreatePart containerBottom={elementProp}/>
+                <CreatePart containerBottom={elementProp} />
             </Box>
         </ThemeProvider >
     )
