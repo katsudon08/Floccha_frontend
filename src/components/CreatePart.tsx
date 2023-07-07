@@ -65,7 +65,9 @@ export const CreatePart = ({ containerBottom }: { containerBottom: number }) => 
                         <Grid item xs>
                             <Box sx={{ height: editorHeight, width: "100%", mt: 2, border: 1, borderColor: "divider", overflowX: "auto", borderTopRightRadius: 7, borderBottomRightRadius: 7 }}>
                                 <Box sx={{ height: "100%", width: "100%", padding: 1, overflowY: "auto", whiteSpace: "nowrap", position: "relative" }}>
-                                    <FlowChart />
+                                    {/* <Container sx={{height: "100%", width: "100%"}}> */}
+                                        <FlowChart />
+                                    {/* </Container> */}
                                 </Box>
                             </Box>
                         </Grid>
