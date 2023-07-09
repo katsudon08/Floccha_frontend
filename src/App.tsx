@@ -46,7 +46,7 @@ function App() {
         // contextかuseStateのどちらかを使って同会層での値の受け渡しを行う
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Box sx={{ padding: 2, minHeight: "100vh" }} ref={containerRef}>
+            <Box sx={{ minHeight: "100vh" }} ref={containerRef}>
                 <CreatePart containerBottom={elementProp} />
             </Box>
         </ThemeProvider >

@@ -1,7 +1,7 @@
 import React, { RefObject, useEffect, useRef, useState } from 'react';
 import { Editor, EditorState, convertToRaw } from 'draft-js'
 import 'draft-js/dist/Draft.css'
-import { Button, Box, Grid, Container, Card, Paper, Toolbar } from '@mui/material';
+import { Button, Box, Grid, Container, Card, Paper, Toolbar, AppBar, Typography } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import IconButton from '@mui/material/IconButton';
 import { useGetElementProperty } from './getElementPropHook';
@@ -27,7 +27,7 @@ export const CreatePart = ({ containerBottom }: { containerBottom: number }) => 
     console.log("containerBottom", containerBottom);
 
     // おそらくpadding: 2の値が50px
-    const editorHeight = containerBottom - elementProp[0] - 50;
+    const editorHeight = containerBottom - elementProp[0] - 30;
     const editorWidth = elementProp[1] / 5 * 3;
     console.log("editorHeight", editorHeight);
 
@@ -45,12 +45,15 @@ export const CreatePart = ({ containerBottom }: { containerBottom: number }) => 
         <>
             <Grid container direction="column">
                 <Grid item xs="auto" ref={targetRef}>
+                    <AppBar position='static'>
                     <Toolbar>
-                        <Button variant='outlined' onClick={saveContent} >save</Button>
+                        <Typography sx={{flexGrow: 1}} />
+                        <Button color='base_color' variant='outlined' onClick={saveContent} >save</Button>
                     </Toolbar>
+                    </AppBar>
                 </Grid>
                 <Grid item xs >
-                    <Grid container direction="row">
+                    <Grid container direction="row" sx={{paddingRight: 2, paddingLeft: 2}}>
                         <Grid item xs>
                             <Box sx={{ height: editorHeight, width: editorWidth, mt: 2, border: 1, borderColor: "divider", overflowX: "auto", borderTopLeftRadius: 7, borderBottomLeftRadius: 7 }}>
                                 <Box sx={{ height: "100%", width: "100%", padding: 1, overflowY: "auto", whiteSpace: "nowrap", position: "relative" }}>
