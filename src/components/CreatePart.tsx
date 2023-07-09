@@ -4,7 +4,7 @@ import 'draft-js/dist/Draft.css'
 import { Button, Box, Grid, Container, Card, Paper, Toolbar, AppBar, Typography } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import IconButton from '@mui/material/IconButton';
-import { useGetElementProperty } from './getElementPropHook';
+import { useGetElementProperty } from '../../Hooks/getElementPropHook';
 import { FlowChart } from './FlowChart';
 
 

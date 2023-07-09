@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import { CssBaseline } from "@mui/material"
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Box from '@mui/material/Box';
-import { useGetElementProperty } from "./components/getElementPropHook";
+import { useGetElementProperty } from "../Hooks/getElementPropHook";
 import { Header } from "./components/Header";
 import { CreatePart } from "./components/CreatePart";
 
