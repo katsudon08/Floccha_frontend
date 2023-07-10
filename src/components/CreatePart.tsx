@@ -4,7 +4,7 @@ import 'draft-js/dist/Draft.css'
 import { Button, Box, Grid, Container, Card, Paper, Toolbar, AppBar, Typography } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import IconButton from '@mui/material/IconButton';
-import { useGetElementProperty } from '../../Hooks/getElementPropHook';
+import { useGetElementProperty } from '../Hooks/getElementPropHook';
 import { FlowChart } from './FlowChart';
 
 
@@ -26,7 +26,6 @@ export const CreatePart = ({ containerBottom }: { containerBottom: number }) => 
     console.log("buttonBottom", elementProp);
     console.log("containerBottom", containerBottom);
 
-    // おそらくpadding: 2の値が50px
     const editorHeight = containerBottom - elementProp[0] - 30;
     const editorWidth = elementProp[1] / 5 * 3;
     console.log("editorHeight", editorHeight);

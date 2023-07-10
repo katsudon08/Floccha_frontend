@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "Hooks/getElementPropHook.ts"],
+  "include": ["src", "src/Hooks/getElementPropHook.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
