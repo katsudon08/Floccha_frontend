@@ -7,6 +7,8 @@ import IconButton from '@mui/material/IconButton';
 import axios from 'axios';
 import { useGetElementProperty } from '../Hooks/getElementPropHook';
 import { FlowChart } from './FlowChart';
+import { initialNodes } from '../flowchartProps/nodes';
+import { initialEdges } from '../flowchartProps/edges';
 
 // hiddenを使うのかもしれない
 export const CreatePart = ({ containerBottom }: { containerBottom: number }) => {
@@ -50,11 +52,32 @@ export const CreatePart = ({ containerBottom }: { containerBottom: number }) => 
 
         axios.post("http://localhost:8000", { src: texts })
             .then((response) => {
-                console.log(response.data);
+                const data = response.data;
+                console.log(data);
+                for (let midRep of data) {
+                    console.log(midRep.id);
+                    console.log(midRep.position);
+                    console.log(midRep.data);
+                    let midRepNode = { id: midRep.id, position: midRep.position, data: midRep.data };
+                    initialNodes.push(midRepNode);
+                    console.log(midRep.edgeId);
+                    console.log(midRep.source);
+                    console.log(midRep.target);
+                    if (midRep.source === null || midRep.target === null) {
+                        break;
+                    }
+                    let midRepEdge = { id: midRep.edgeId, source: midRep.source, target: midRep.target };
+                    initialEdges.push(midRepEdge);
+                }
             })
             .catch((error) => {
                 console.error(error);
             });
+
+        const {data} = await axios.post("http://localhost:8080/", {src: texts});
+
+        console.log(initialNodes);
+        console.log(initialEdges);
     }
 
     // * Tabの実装は難しいかもしれない
