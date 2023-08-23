@@ -11,7 +11,7 @@ import ReactFlow, {
     NodeChange,
     EdgeChange,
     applyEdgeChanges,
-    ReactFlowProvider,
+    Edge,
 } from 'reactflow'
 import "reactflow/dist/style.css"
 // import { initialNodes } from "../flowchartProps/nodes";
@@ -19,7 +19,7 @@ import "reactflow/dist/style.css"
 import { addNodes } from "./CreatePart"
 import { addEdges } from "./CreatePart"
 
-export const FlowChart = () => {
+export const FlowChart = ({ parentNodes, parentEdges }: { parentNodes: Node[], parentEdges: Edge[] }) => {
     console.log("flowchart: " + addNodes)
     const [nodes, setNodes] = useNodesState([]);
     const [edges, setEdges] = useEdgesState([]);

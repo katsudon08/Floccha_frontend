@@ -5,7 +5,7 @@ import { Button, Box, Grid, Container, Card, Paper, Toolbar, AppBar, Typography 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import IconButton from '@mui/material/IconButton';
 import axios from 'axios';
-import { Node, ReactFlowProvider } from 'reactflow';
+import { Node, ReactFlowProvider, useNodesState } from 'reactflow';
 import { Edge } from 'reactflow';
 import { useGetElementProperty } from '../Hooks/getElementPropHook';
 import { FlowChart } from './FlowChart';
@@ -17,6 +17,9 @@ export const addEdges: Edge<undefined | { label: string }>[] = [];
 
 // hiddenを使うのかもしれない
 export const CreatePart = ({ containerBottom }: { containerBottom: number }) => {
+    const [parentNodes, setParentNodes] = useState([]);
+    const [parentEdges, setParentEdges] = useState([])
+
     const [elementProp, setElementProp] = useState<number[]>([0]);
     const [editorState, setEditorState] = React.useState<EditorState>(
         EditorState.createEmpty()
@@ -137,7 +140,7 @@ export const CreatePart = ({ containerBottom }: { containerBottom: number }) => 
                             <Box sx={{ height: editorHeight, width: "100%", mt: 2, border: 1, borderColor: "divider", overflowX: "auto", borderTopRightRadius: 7, borderBottomRightRadius: 7 }}>
                                 <Box sx={{ height: "100%", width: "100%", padding: 1, overflowY: "auto", whiteSpace: "nowrap", position: "relative" }}>
                                     <ReactFlowProvider>
-                                        <FlowChart />
+                                        <FlowChart parentNodes = {parentNodes} parentEdges = {parentEdges} />
                                     </ReactFlowProvider>
                                 </Box>
                             </Box>
