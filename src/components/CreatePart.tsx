@@ -5,13 +5,15 @@ import { Button, Box, Grid, Container, Card, Paper, Toolbar, AppBar, Typography 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import IconButton from '@mui/material/IconButton';
 import axios from 'axios';
+import { Node, ReactFlowProvider } from 'reactflow';
+import { Edge } from 'reactflow';
 import { useGetElementProperty } from '../Hooks/getElementPropHook';
 import { FlowChart } from './FlowChart';
-import { initialNodes } from '../flowchartProps/nodes';
-import { initialEdges } from '../flowchartProps/edges';
+// import { initialNodes } from '../flowchartProps/nodes';
+// import { initialEdges } from '../flowchartProps/edges';
 
-// export const initialNodes = [];
-// export const initialEdges = [];
+export const addNodes: Node<undefined | { label: string }>[] = [];
+export const addEdges: Edge<undefined | { label: string }>[] = [];
 
 // hiddenを使うのかもしれない
 export const CreatePart = ({ containerBottom }: { containerBottom: number }) => {
@@ -34,7 +36,7 @@ export const CreatePart = ({ containerBottom }: { containerBottom: number }) => 
     const editorWidth = elementProp[1] / 5 * 3;
     // console.log("editorHeight", editorHeight);
 
-    const saveContent = () => {
+    const saveContent = async () => {
         const currentContent = editorState.getCurrentContent();
         const raw = convertToRaw(currentContent);
         const contentBlock = raw.blocks;
@@ -49,36 +51,6 @@ export const CreatePart = ({ containerBottom }: { containerBottom: number }) => 
         // console.log(editorState)
         // console.log(setEditorState)
 
-        axios.post("http://localhost:8000", { src: texts })
-            .then(async (response) => {
-                const data = response.data;
-                console.log(data);
-                for await (let midRep of data) {
-                    // console.log(midRep.id);
-                    // console.log(midRep.position);
-                    // console.log(midRep.data);
-                    let midRepNode = { id: midRep.id, position: midRep.position, data: midRep.data };
-                    console.log(midRepNode);
-                    initialNodes.push(midRepNode);
-                    // console.log(midRep.edgeId);
-                    // console.log(midRep.source);
-                    // console.log(midRep.target);
-                    if (midRep.source === null || midRep.target === null) {
-                        console.log("null");
-                        continue;
-                    }
-                    let midRepEdge = { id: midRep.edgeId, source: midRep.source, target: midRep.target };
-                    console.log(midRepEdge);
-                    await initialEdges.push(midRepEdge);
-                    console.log("nodes" + initialNodes, "edges" + initialEdges);
-                }
-            })
-            .catch((error) => {
-                if (axios.isAxiosError(error)) {
-                    console.error(error);
-                }
-            });
-
         // try {
         //     const url = "http://localhost:8080"
         //     const { data } = await axios.post(url, { src: texts });
@@ -89,8 +61,39 @@ export const CreatePart = ({ containerBottom }: { containerBottom: number }) => 
         //     }
         // }
 
-        console.log(`initialNodes: ${initialNodes}`);
-        console.log(`initialEdges: ${initialEdges}`);
+        //! 上記のコードはnetwork_errorを起こして動かないため、下記のコードで代替
+
+        await axios.post("http://localhost:8000", { src: texts })
+            .then((response) => {
+                const data = response.data;
+                console.log(data);
+                for (let midRep of data) {
+                    // console.log(midRep.id);
+                    // console.log(midRep.position);
+                    // console.log(midRep.data);
+                    let midRepNode = { id: midRep.id, position: midRep.position, data: midRep.data };
+                    console.log(midRepNode);
+                    addNodes.push(midRepNode);
+                    // console.log(midRep.edgeId);
+                    // console.log(midRep.source);
+                    // console.log(midRep.target);
+                    if (midRep.source === null || midRep.target === null) {
+                        console.log("null");
+                        continue;
+                    }
+                    let midRepEdge = { id: midRep.edgeId, source: midRep.source, target: midRep.target };
+                    console.log(midRepEdge);
+                    addEdges.push(midRepEdge);
+                    console.log("nodes: " + addNodes, "edges: " + addEdges);
+                }
+            })
+            .catch((error) => {
+                if (axios.isAxiosError(error)) {
+                    console.error(error);
+                }
+            });
+
+        console.log("nodes: " + addNodes, "edges: " + addEdges);
     }
 
     // * Tabの実装は難しいかもしれない
@@ -133,9 +136,9 @@ export const CreatePart = ({ containerBottom }: { containerBottom: number }) => 
                         <Grid item xs>
                             <Box sx={{ height: editorHeight, width: "100%", mt: 2, border: 1, borderColor: "divider", overflowX: "auto", borderTopRightRadius: 7, borderBottomRightRadius: 7 }}>
                                 <Box sx={{ height: "100%", width: "100%", padding: 1, overflowY: "auto", whiteSpace: "nowrap", position: "relative" }}>
-                                    {/* <Container sx={{height: "100%", width: "100%"}}> */}
-                                    <FlowChart />
-                                    {/* </Container> */}
+                                    <ReactFlowProvider>
+                                        <FlowChart />
+                                    </ReactFlowProvider>
                                 </Box>
                             </Box>
                         </Grid>

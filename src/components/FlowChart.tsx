@@ -1,4 +1,4 @@
-import { useCallback } from "react"
+import { useCallback, useEffect } from "react"
 import ReactFlow, {
     MiniMap,
     Controls,
@@ -7,18 +7,36 @@ import ReactFlow, {
     useEdgesState,
     addEdge,
     Connection,
+    applyNodeChanges,
+    NodeChange,
+    EdgeChange,
+    applyEdgeChanges,
+    ReactFlowProvider,
 } from 'reactflow'
 import "reactflow/dist/style.css"
-import { initialNodes } from "../flowchartProps/nodes";
-import { initialEdges } from "../flowchartProps/edges";
+// import { initialNodes } from "../flowchartProps/nodes";
+// import { initialEdges } from "../flowchartProps/edges";
+import { addNodes } from "./CreatePart"
+import { addEdges } from "./CreatePart"
 
 export const FlowChart = () => {
-    const [nodes, setnodes, onNodesChange] = useNodesState(initialNodes);
-    const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+    console.log("flowchart: " + addNodes)
+    const [nodes, setNodes] = useNodesState([]);
+    const [edges, setEdges] = useEdgesState([]);
 
     const onConnect = useCallback((params: Connection) => {
         setEdges((eds) => addEdge(params, eds))
     }, [setEdges]);
+
+    const onNodesChange = useCallback(
+        (changes: NodeChange[]) => setNodes((nodes) => applyNodeChanges(changes, nodes)),
+        [addNodes]
+    );
+
+    const onEdgesChange = useCallback(
+        (changes: EdgeChange[]) => setEdges((edges) => applyEdgeChanges(changes, edges)),
+        [addEdges]
+    );
 
     return (
         <ReactFlow
