@@ -10,6 +10,9 @@ import { FlowChart } from './FlowChart';
 import { initialNodes } from '../flowchartProps/nodes';
 import { initialEdges } from '../flowchartProps/edges';
 
+// export const initialNodes = [];
+// export const initialEdges = [];
+
 // hiddenを使うのかもしれない
 export const CreatePart = ({ containerBottom }: { containerBottom: number }) => {
     const [elementProp, setElementProp] = useState<number[]>([0]);
@@ -31,7 +34,7 @@ export const CreatePart = ({ containerBottom }: { containerBottom: number }) => 
     const editorWidth = elementProp[1] / 5 * 3;
     // console.log("editorHeight", editorHeight);
 
-    const saveContent = async () => {
+    const saveContent = () => {
         const currentContent = editorState.getCurrentContent();
         const raw = convertToRaw(currentContent);
         const contentBlock = raw.blocks;
@@ -46,45 +49,48 @@ export const CreatePart = ({ containerBottom }: { containerBottom: number }) => 
         // console.log(editorState)
         // console.log(setEditorState)
 
-        // axios.post("http://localhost:8000", { srcCode: texts }).then((response) => {
-        //     console.log(response.data);
-        // });
+        axios.post("http://localhost:8000", { src: texts })
+            .then(async (response) => {
+                const data = response.data;
+                console.log(data);
+                for await (let midRep of data) {
+                    // console.log(midRep.id);
+                    // console.log(midRep.position);
+                    // console.log(midRep.data);
+                    let midRepNode = { id: midRep.id, position: midRep.position, data: midRep.data };
+                    console.log(midRepNode);
+                    initialNodes.push(midRepNode);
+                    // console.log(midRep.edgeId);
+                    // console.log(midRep.source);
+                    // console.log(midRep.target);
+                    if (midRep.source === null || midRep.target === null) {
+                        console.log("null");
+                        continue;
+                    }
+                    let midRepEdge = { id: midRep.edgeId, source: midRep.source, target: midRep.target };
+                    console.log(midRepEdge);
+                    await initialEdges.push(midRepEdge);
+                    console.log("nodes" + initialNodes, "edges" + initialEdges);
+                }
+            })
+            .catch((error) => {
+                if (axios.isAxiosError(error)) {
+                    console.error(error);
+                }
+            });
 
-        // axios.post("http://localhost:8000", { src: texts })
-        //     .then((response) => {
-        //         const data = response.data;
-        //         console.log(data);
-        //         for (let midRep of data) {
-        //             console.log(midRep.id);
-        //             console.log(midRep.position);
-        //             console.log(midRep.data);
-        //             let midRepNode = { id: midRep.id, position: midRep.position, data: midRep.data };
-        //             initialNodes.push(midRepNode);
-        //             console.log(midRep.edgeId);
-        //             console.log(midRep.source);
-        //             console.log(midRep.target);
-        //             if (midRep.source === null || midRep.target === null) {
-        //                 break;
-        //             }
-        //             let midRepEdge = { id: midRep.edgeId, source: midRep.source, target: midRep.target };
-        //             initialEdges.push(midRepEdge);
-        //         }
-        //     })
-        //     .catch((error) => {
-        //         console.error(error);
-        //     });
+        // try {
+        //     const url = "http://localhost:8080"
+        //     const { data } = await axios.post(url, { src: texts });
+        //     console.log(data);
+        // } catch (error) {
+        //     if (axios.isAxiosError(error)) {
+        //         console.log(error);
+        //     }
+        // }
 
-        try {
-            const { data } = await axios.post("http://localhost:8080", { src: texts });
-            console.log(data);
-        } catch (error) {
-            if (axios.isAxiosError(error)) {
-                console.log(error);
-            }
-        }
-
-        console.log(initialNodes);
-        console.log(initialEdges);
+        console.log(`initialNodes: ${initialNodes}`);
+        console.log(`initialEdges: ${initialEdges}`);
     }
 
     // * Tabの実装は難しいかもしれない
