@@ -5,7 +5,7 @@ import { Button, Box, Grid, Container, Card, Paper, Toolbar, AppBar, Typography 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import IconButton from '@mui/material/IconButton';
 import axios from 'axios';
-import { Node, ReactFlowProvider, useNodesState } from 'reactflow';
+import { Node, ReactFlowProvider, useNodesState, useEdgesState } from 'reactflow';
 import { Edge } from 'reactflow';
 import { useGetElementProperty } from '../Hooks/getElementPropHook';
 import { FlowChart } from './FlowChart';
@@ -17,8 +17,9 @@ export const addEdges: Edge<undefined | { label: string }>[] = [];
 
 // hiddenを使うのかもしれない
 export const CreatePart = ({ containerBottom }: { containerBottom: number }) => {
-    const [parentNodes, setParentNodes] = useState([]);
-    const [parentEdges, setParentEdges] = useState([])
+    // 親コンポーネントのsetnodes, setedgesで子コンポーネントのuseStateの値を変えるために、ここで定義
+    const [parentNodes, setParentNodes] = useNodesState([]);
+    const [parentEdges, setParentEdges] = useEdgesState([]);
 
     const [elementProp, setElementProp] = useState<number[]>([0]);
     const [editorState, setEditorState] = React.useState<EditorState>(
@@ -76,7 +77,7 @@ export const CreatePart = ({ containerBottom }: { containerBottom: number }) => 
                     // console.log(midRep.data);
                     let midRepNode = { id: midRep.id, position: midRep.position, data: midRep.data };
                     console.log(midRepNode);
-                    addNodes.push(midRepNode);
+                    setParentNodes((nds) => nds.concat(midRepNode));
                     // console.log(midRep.edgeId);
                     // console.log(midRep.source);
                     // console.log(midRep.target);
@@ -86,7 +87,7 @@ export const CreatePart = ({ containerBottom }: { containerBottom: number }) => 
                     }
                     let midRepEdge = { id: midRep.edgeId, source: midRep.source, target: midRep.target };
                     console.log(midRepEdge);
-                    addEdges.push(midRepEdge);
+                    setParentEdges((eds) => eds.concat(midRepEdge));
                     console.log("nodes: " + addNodes, "edges: " + addEdges);
                 }
             })
